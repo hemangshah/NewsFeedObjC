@@ -10,7 +10,7 @@
 
 @interface SmileyViewController ()
 - (IBAction)actionDismiss:(id)sender;
-@property (nonatomic, weak) IBOutlet UILabel *lblSmiley;
+@property (nonatomic, weak) IBOutlet UILabel *smileyLabel;
 @end
 
 @implementation SmileyViewController
@@ -18,7 +18,7 @@
 - (void) updateUI {
     self.title = @"Smiley";
     //We can get more smileys. ctrl + command + space shortcut.
-    self.lblSmiley.text = @"😄😄😄😄😄";
+    self.smileyLabel.text = @"😄😄😄😄😄";
 }
 
 #pragma mark - View Life Cycle

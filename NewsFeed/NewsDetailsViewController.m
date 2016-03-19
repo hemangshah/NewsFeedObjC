@@ -15,10 +15,11 @@
 @interface NewsDetailsViewController () {
     NewsItem *newsItem;
 }
-@property (nonatomic, weak) IBOutlet UIImageView *imgViewIcon;
-@property (nonatomic, weak) IBOutlet UILabel *lblTitle;
-@property (nonatomic, weak) IBOutlet UILabel *lblSubtitle;
-@property (nonatomic, weak) IBOutlet UITextView *txtViewBody;
+
+@property (nonatomic, weak) IBOutlet UIImageView *iconImageView;
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UILabel *subtitleLabel;
+@property (nonatomic, weak) IBOutlet UITextView *bodyTextView;
 @end
 
 @implementation NewsDetailsViewController
@@ -26,21 +27,19 @@
 - (void) updateUI {
     self.title = newsItem.newsSubTitle;
     
-    self.lblTitle.font = [UIFont boldSystemFontOfSize:17.0f];
-    self.lblSubtitle.font = [UIFont systemFontOfSize:14.0f];
+    self.titleLabel.font = [UIFont boldSystemFontOfSize:17.0f];
+    self.subtitleLabel.font = [UIFont systemFontOfSize:14.0f];
     
-    self.imgViewIcon.layer.cornerRadius = CGRectGetWidth(self.imgViewIcon.frame)/2.0f;
-    self.imgViewIcon.layer.masksToBounds = YES;
-    self.imgViewIcon.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.imgViewIcon.layer.borderWidth = 3.0f;
-}
-
-- (void) setNewsData {
+    self.iconImageView.layer.cornerRadius = CGRectGetWidth(self.iconImageView.frame)/2.0f;
+    self.iconImageView.layer.masksToBounds = YES;
+    self.iconImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.iconImageView.layer.borderWidth = 3.0f;
+    
     if(newsItem) {
-        [self.imgViewIcon setImageWithURL:newsItem.newsImageUrl placeholderImage:[UIImage imageNamed:@"news.png"]];
-        self.lblTitle.text = newsItem.newsTitle;
-        self.lblSubtitle.text = newsItem.newsSubTitle;
-        self.txtViewBody.text = newsItem.newsBody;
+        [self.iconImageView setImageWithURL:newsItem.newsImageUrl placeholderImage:[UIImage imageNamed:@"news.png"]];
+        self.titleLabel.text = newsItem.newsTitle;
+        self.subtitleLabel.text = newsItem.newsSubTitle;
+        self.bodyTextView.text = newsItem.newsBody;
     }
 }
 
@@ -49,7 +48,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self updateUI];
-    [self setNewsData];
 }
 
 - (void)didReceiveMemoryWarning {

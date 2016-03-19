@@ -9,7 +9,6 @@
 #import "NewsListViewController.h"
 #import "NewsDetailsViewController.h"
 
-#import <UIImageView+AFNetworking.h>
 #import <UIScrollView+EmptyDataSet.h>
 #import <AFNetworkReachabilityManager.h>
 
@@ -21,9 +20,9 @@
 static NSString * const kNewsItemResponse = @"items";
 
 @interface NewsListViewController () <DZNEmptyDataSetSource, DZNEmptyDataSetDelegate> {
-    NSMutableArray *arrayNewsItems;
+    NSMutableArray *newsItems;
 }
-@property (nonatomic, weak) IBOutlet UITableView *tblViewList;
+@property (nonatomic, weak) IBOutlet UITableView *listTableView;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end
 
@@ -31,9 +30,9 @@ static NSString * const kNewsItemResponse = @"items";
 #pragma mark - Update UI
 - (void) updateUI {
     self.title = @"News Feeds";
-    self.tblViewList.tableFooterView = [UIView new];
-    self.tblViewList.emptyDataSetSource = self;
-    self.tblViewList.emptyDataSetDelegate = self;
+    self.listTableView.tableFooterView = [UIView new];
+    self.listTableView.emptyDataSetSource = self;
+    self.listTableView.emptyDataSetDelegate = self;
 }
 
 - (void) showIndicator {
@@ -80,7 +79,7 @@ static NSString * const kNewsItemResponse = @"items";
 
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
     //If we found that, our array was initiazed only then we'll show empty data set.
-    if(arrayNewsItems) {
+    if(newsItems) {
         return YES;
     } else {
         return NO;
@@ -101,23 +100,23 @@ static NSString * const kNewsItemResponse = @"items";
         NSLog(@"%@", error);
         [self hideIndicator];
         [self initialization];
-        [self.tblViewList reloadEmptyDataSet];
+        [self.listTableView reloadEmptyDataSet];
     }];
 }
 
 #pragma mark - Initialization
 - (void) initialization {
-    if(!arrayNewsItems) {
-        arrayNewsItems = [NSMutableArray array];
+    if(!newsItems) {
+        newsItems = [NSMutableArray array];
     } else {
-        [arrayNewsItems removeAllObjects];
+        [newsItems removeAllObjects];
     }
 }
 
 #pragma mark - Parse Result
 - (void) parseResult:(id)responseObject {
     if(responseObject) {
-        //Update arrayNewsItems before adding new NewsItem.
+        //Update newsItems before adding new NewsItem.
         [self initialization];
         //Fetch array of items from the response
         NSArray *items = [NSArray arrayWithArray:[responseObject objectForKey:kNewsItemResponse]];
@@ -125,27 +124,27 @@ static NSString * const kNewsItemResponse = @"items";
             //Loop through each item and get a dictionary, later it will become NewsItem.
             for(NSDictionary *newsDictionary in items) {
                 //Convert dictionary to NewsItem object.
-                //Add into arrayNewsItems.
-                [arrayNewsItems addObject:[[NewsItem alloc] initWithNewsDictionary:newsDictionary]];
+                //Add into newsItems.
+                [newsItems addObject:[[NewsItem alloc] initWithNewsDictionary:newsDictionary]];
             }
         }
 
         //Hide indicator
         [self hideIndicator];
         
-        if([arrayNewsItems count]) {
+        if(newsItems.count) {
             //If we'll have some data, we then reload the table.
-            [self.tblViewList reloadData];
+            [self.listTableView reloadData];
         } else {
             //If we'll not have anything, we then reload the table empty dataset.
-            [self.tblViewList reloadEmptyDataSet];
+            [self.listTableView reloadEmptyDataSet];
         }
     }
 }
 
 #pragma mark - UITableView Datasource/Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return arrayNewsItems.count;
+    return newsItems.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -154,7 +153,8 @@ static NSString * const kNewsItemResponse = @"items";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NewsFeedTableViewCell *cell = (NewsFeedTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"NewsFeedTableViewCell"];
-    [self configureNewsFeedCell:cell forIndexPath:indexPath];
+    NewsItem *item = [newsItems objectAtIndex:indexPath.row];
+    [cell configureCellWithNewsItem:item];
     return cell;
 }
 
@@ -163,16 +163,9 @@ static NSString * const kNewsItemResponse = @"items";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     //Pass on selected NewsItem to NewsDetailsViewController.
-    NewsItem *item = [arrayNewsItems objectAtIndex:indexPath.row];
+    NewsItem *item = [newsItems objectAtIndex:indexPath.row];
     NewsDetailsViewController *newsDetailsVC = (NewsDetailsViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetailsViewController"];
     [newsDetailsVC setSelectedNewsItem:item];
     [self.navigationController pushViewController:newsDetailsVC animated:YES];
-}
-
-- (void) configureNewsFeedCell:(NewsFeedTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
-    NewsItem *item = [arrayNewsItems objectAtIndex:indexPath.row];
-    cell.lblTitle.text = item.newsTitle;
-    cell.lblSubtitle.text = item.newsSubTitle;
-    [cell.imgViewIcon setImageWithURL:item.newsImageUrl placeholderImage:[UIImage imageNamed:@"news.png"]];
 }
 @end

@@ -83,9 +83,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="imgViewIcon" destination="whe-1W-kOU" id="Xdj-N2-itc"/>
-                                            <outlet property="lblSubtitle" destination="HPl-cf-njM" id="bdS-gJ-W0N"/>
-                                            <outlet property="lblTitle" destination="9Nd-D8-slX" id="qt9-GZ-0sM"/>
+                                            <outlet property="iconImageView" destination="whe-1W-kOU" id="DKc-cF-z3r"/>
+                                            <outlet property="subtitleLabel" destination="HPl-cf-njM" id="FKJ-u5-mre"/>
+                                            <outlet property="titleLabel" destination="9Nd-D8-slX" id="fL1-Pv-UIf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -114,7 +114,7 @@
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Xco-c9-ltz" id="Uex-Ak-Q9O"/>
-                        <outlet property="tblViewList" destination="Kk0-Pr-YUi" id="Fs4-Oj-Pb8"/>
+                        <outlet property="listTableView" destination="Kk0-Pr-YUi" id="otK-2O-gWl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -187,10 +187,10 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
-                        <outlet property="imgViewIcon" destination="QTS-qY-YBP" id="tRQ-HP-tZc"/>
-                        <outlet property="lblSubtitle" destination="6Uu-RI-eaA" id="4zE-6C-bPi"/>
-                        <outlet property="lblTitle" destination="sZL-l9-zvG" id="55U-hP-lG8"/>
-                        <outlet property="txtViewBody" destination="Kxd-ql-SRt" id="w67-Hg-Rgh"/>
+                        <outlet property="bodyTextView" destination="Kxd-ql-SRt" id="fnD-sH-f3j"/>
+                        <outlet property="iconImageView" destination="QTS-qY-YBP" id="qnZ-XC-o3W"/>
+                        <outlet property="subtitleLabel" destination="6Uu-RI-eaA" id="2kg-Wg-WJW"/>
+                        <outlet property="titleLabel" destination="sZL-l9-zvG" id="fw8-nK-kxw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCw-9R-h1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -285,7 +285,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
-                        <outlet property="lblSmiley" destination="eyz-t9-mmz" id="H4T-TW-6l5"/>
+                        <outlet property="smileyLabel" destination="eyz-t9-mmz" id="s7r-CN-41j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="enG-hm-WSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class NewsItem;
+
 @interface NewsFeedTableViewCell : UITableViewCell
-@property (nonatomic, strong) IBOutlet UIImageView *imgViewIcon;
-@property (nonatomic, strong) IBOutlet UILabel *lblTitle;
-@property (nonatomic, strong) IBOutlet UILabel *lblSubtitle;
+@property (nonatomic, strong) IBOutlet UIImageView *iconImageView;
+@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *subtitleLabel;
+
+- (void) configureCellWithNewsItem:(NewsItem *)newsItem;
 @end
