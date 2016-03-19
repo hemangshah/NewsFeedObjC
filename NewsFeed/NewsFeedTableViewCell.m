@@ -14,6 +14,8 @@
     // Initialization code
     self.lblTitle.font = [UIFont boldSystemFontOfSize:16.0f];
     self.lblSubtitle.font = [UIFont systemFontOfSize:14.0f];
+    self.imgViewIcon.layer.cornerRadius = 5.0f;
+    self.imgViewIcon.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

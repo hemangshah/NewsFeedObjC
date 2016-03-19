@@ -7,18 +7,19 @@
 //
 
 #import "NewsListViewController.h"
+#import "NewsDetailsViewController.h"
 
 #import <UIImageView+AFNetworking.h>
+#import <UIScrollView+EmptyDataSet.h>
 
 #import "NFHTTPClient.h"
 
 #import "NewsItem.h"
-
 #import "NewsFeedTableViewCell.h"
 
 static NSString * const kNewsItemResponse = @"items";
 
-@interface NewsListViewController () {
+@interface NewsListViewController () <DZNEmptyDataSetSource, DZNEmptyDataSetDelegate> {
     NSMutableArray *arrayNewsItems;
 }
 @property (nonatomic, weak) IBOutlet UITableView *tblViewList;
@@ -30,6 +31,8 @@ static NSString * const kNewsItemResponse = @"items";
 - (void) updateUI {
     self.title = @"News Feeds";
     self.tblViewList.tableFooterView = [UIView new];
+    self.tblViewList.emptyDataSetSource = self;
+    self.tblViewList.emptyDataSetDelegate = self;
 }
 
 - (void) showIndicator {
@@ -52,6 +55,35 @@ static NSString * const kNewsItemResponse = @"items";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - EmptyDataSet Datasource
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *title = @"No feeds";
+    return [[NSAttributedString alloc] initWithString:title attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:16.0f]}];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *description = @"Please come back later. We'll surely have some great news for you.";
+    return [[NSAttributedString alloc] initWithString:description attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0f]}];
+}
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"news.png"];
+}
+
+#pragma mark - EmptyDataSet Delegate
+- (BOOL)emptyDataSetShouldFadeIn:(UIScrollView *)scrollView {
+    return YES;
+}
+
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
+    //If we found that, our array was initiazed only then we'll show empty data set.
+    if(arrayNewsItems) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 #pragma mark - Requests
@@ -88,13 +120,17 @@ static NSString * const kNewsItemResponse = @"items";
                 [arrayNewsItems addObject:[[NewsItem alloc] initWithNewsDictionary:newsDictionary]];
             }
         }
-        
-        //If we'll have some data, we then reload the table.
-        if([arrayNewsItems count]) {
-            [self.tblViewList reloadData];
-        }
-        
+
+        //Hide indicator
         [self hideIndicator];
+        
+        if([arrayNewsItems count]) {
+            //If we'll have some data, we then reload the table.
+            [self.tblViewList reloadData];
+        } else {
+            //If we'll not have anything, we then reload the table empty dataset.
+            [self.tblViewList reloadEmptyDataSet];
+        }
     }
 }
 
@@ -111,6 +147,17 @@ static NSString * const kNewsItemResponse = @"items";
     NewsFeedTableViewCell *cell = (NewsFeedTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"NewsFeedTableViewCell"];
     [self configureNewsFeedCell:cell forIndexPath:indexPath];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //Deselect Row.
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //Pass on selected NewsItem to NewsDetailsViewController.
+    NewsItem *item = [arrayNewsItems objectAtIndex:indexPath.row];
+    NewsDetailsViewController *newsDetailsVC = (NewsDetailsViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetailsViewController"];
+    [newsDetailsVC setSelectedNewsItem:item];
+    [self.navigationController pushViewController:newsDetailsVC animated:YES];
 }
 
 - (void) configureNewsFeedCell:(NewsFeedTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {

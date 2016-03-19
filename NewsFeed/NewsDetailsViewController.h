@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewsDetailsViewController : UIViewController
+@class NewsItem;
 
+@interface NewsDetailsViewController : UIViewController
+- (void) setSelectedNewsItem:(NewsItem *)selectedNewsItem;
 @end

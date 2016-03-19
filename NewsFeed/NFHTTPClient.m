@@ -30,6 +30,7 @@ static NFHTTPClient *sharedInstance = nil;
     if(self) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         self.responseSerializer.acceptableContentTypes = [self.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+        self.requestSerializer.timeoutInterval = 10.0f;
     }
     return self;
 }
