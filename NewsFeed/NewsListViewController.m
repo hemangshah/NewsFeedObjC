@@ -11,6 +11,7 @@
 
 #import <UIImageView+AFNetworking.h>
 #import <UIScrollView+EmptyDataSet.h>
+#import <AFNetworkReachabilityManager.h>
 
 #import "NFHTTPClient.h"
 
@@ -59,12 +60,12 @@ static NSString * const kNewsItemResponse = @"items";
 
 #pragma mark - EmptyDataSet Datasource
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *title = @"No feeds";
+    NSString *title = ([AFNetworkReachabilityManager sharedManager].reachable) ? @"No Feeds" : @"No Internet";
     return [[NSAttributedString alloc] initWithString:title attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:16.0f]}];
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *description = @"Please come back later. We'll surely have some great news for you.";
+    NSString *description = ([AFNetworkReachabilityManager sharedManager].reachable) ? @"Please come back later. We'll surely have some great news for you." : @"It seems that you're not connected to the Internet. Please try again.";
     return [[NSAttributedString alloc] initWithString:description attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0f]}];
 }
 
@@ -98,18 +99,26 @@ static NSString * const kNewsItemResponse = @"items";
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         //Ummm. There's some error.
         NSLog(@"%@", error);
+        [self hideIndicator];
+        [self initialization];
+        [self.tblViewList reloadEmptyDataSet];
     }];
+}
+
+#pragma mark - Initialization
+- (void) initialization {
+    if(!arrayNewsItems) {
+        arrayNewsItems = [NSMutableArray array];
+    } else {
+        [arrayNewsItems removeAllObjects];
+    }
 }
 
 #pragma mark - Parse Result
 - (void) parseResult:(id)responseObject {
     if(responseObject) {
         //Update arrayNewsItems before adding new NewsItem.
-        if(!arrayNewsItems) {
-            arrayNewsItems = [NSMutableArray array];
-        } else {
-            [arrayNewsItems removeAllObjects];
-        }
+        [self initialization];
         //Fetch array of items from the response
         NSArray *items = [NSArray arrayWithArray:[responseObject objectForKey:kNewsItemResponse]];
         if(items) {

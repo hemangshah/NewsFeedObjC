@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+//This is important, we're start monitoring for network connection in AppDelegate only.
+#import <AFNetworkReachabilityManager.h>
 
 @interface AppDelegate ()
 
@@ -14,6 +16,26 @@
 
 @implementation AppDelegate
 
+- (void) checkForInternetConnection {
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusUnknown:
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                //available
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+                //not available
+                break;
+            default:
+                break;
+        }
+        
+        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+    }];
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
