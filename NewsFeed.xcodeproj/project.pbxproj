@@ -18,6 +18,7 @@
 		6B485B2D1C9D354600B71E8F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B485B2C1C9D354600B71E8F /* SettingViewController.m */; };
 		6B485B301C9D355300B71E8F /* SmileyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B485B2F1C9D355300B71E8F /* SmileyViewController.m */; };
 		6B485B331C9D3B4700B71E8F /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B485B321C9D3B4700B71E8F /* NewsItem.m */; };
+		6B485B361C9D408B00B71E8F /* NFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B485B351C9D408B00B71E8F /* NFHTTPClient.m */; };
 		6FE46E4221254C1A19A31402 /* libPods-NewsFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F3E7DA7B17F53241A50F15 /* libPods-NewsFeed.a */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,8 @@
 		6B485B2F1C9D355300B71E8F /* SmileyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmileyViewController.m; sourceTree = "<group>"; };
 		6B485B311C9D3B4700B71E8F /* NewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsItem.h; sourceTree = "<group>"; };
 		6B485B321C9D3B4700B71E8F /* NewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsItem.m; sourceTree = "<group>"; };
+		6B485B341C9D408B00B71E8F /* NFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFHTTPClient.h; sourceTree = "<group>"; };
+		6B485B351C9D408B00B71E8F /* NFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFHTTPClient.m; sourceTree = "<group>"; };
 		6FE3F27661D1AF026E195B74 /* Pods-NewsFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsFeed/Pods-NewsFeed.release.xcconfig"; sourceTree = "<group>"; };
 		D49398D96E28F8ACD7106B49 /* Pods-NewsFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewsFeed/Pods-NewsFeed.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +128,8 @@
 				6B485B2F1C9D355300B71E8F /* SmileyViewController.m */,
 				6B485B311C9D3B4700B71E8F /* NewsItem.h */,
 				6B485B321C9D3B4700B71E8F /* NewsItem.m */,
+				6B485B341C9D408B00B71E8F /* NFHTTPClient.h */,
+				6B485B351C9D408B00B71E8F /* NFHTTPClient.m */,
 			);
 			path = NewsFeed;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 				6B485B021C9D23D100B71E8F /* main.m in Sources */,
 				6B485B301C9D355300B71E8F /* SmileyViewController.m in Sources */,
 				6B485B271C9D34FC00B71E8F /* NewsListViewController.m in Sources */,
+				6B485B361C9D408B00B71E8F /* NFHTTPClient.m in Sources */,
 				6B485B2A1C9D350C00B71E8F /* NewsDetailsViewController.m in Sources */,
 				6B485B331C9D3B4700B71E8F /* NewsItem.m in Sources */,
 				6B485B2D1C9D354600B71E8F /* SettingViewController.m in Sources */,
