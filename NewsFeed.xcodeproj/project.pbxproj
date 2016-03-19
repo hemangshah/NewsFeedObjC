@@ -9,11 +9,15 @@
 /* Begin PBXBuildFile section */
 		6B485B021C9D23D100B71E8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B485B011C9D23D100B71E8F /* main.m */; };
 		6B485B051C9D23D100B71E8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B485B041C9D23D100B71E8F /* AppDelegate.m */; };
-		6B485B081C9D23D100B71E8F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B485B071C9D23D100B71E8F /* ViewController.m */; };
 		6B485B0B1C9D23D100B71E8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B485B091C9D23D100B71E8F /* Main.storyboard */; };
 		6B485B0D1C9D23D100B71E8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B485B0C1C9D23D100B71E8F /* Images.xcassets */; };
 		6B485B101C9D23D100B71E8F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B485B0E1C9D23D100B71E8F /* LaunchScreen.xib */; };
 		6B485B1C1C9D23D200B71E8F /* NewsFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B485B1B1C9D23D200B71E8F /* NewsFeedTests.m */; };
+		6B485B271C9D34FC00B71E8F /* NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B485B261C9D34FC00B71E8F /* NewsListViewController.m */; };
+		6B485B2A1C9D350C00B71E8F /* NewsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B485B291C9D350C00B71E8F /* NewsDetailsViewController.m */; };
+		6B485B2D1C9D354600B71E8F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B485B2C1C9D354600B71E8F /* SettingViewController.m */; };
+		6B485B301C9D355300B71E8F /* SmileyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B485B2F1C9D355300B71E8F /* SmileyViewController.m */; };
+		6B485B331C9D3B4700B71E8F /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B485B321C9D3B4700B71E8F /* NewsItem.m */; };
 		6FE46E4221254C1A19A31402 /* libPods-NewsFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F3E7DA7B17F53241A50F15 /* libPods-NewsFeed.a */; };
 /* End PBXBuildFile section */
 
@@ -34,14 +38,22 @@
 		6B485B011C9D23D100B71E8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6B485B031C9D23D100B71E8F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6B485B041C9D23D100B71E8F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6B485B061C9D23D100B71E8F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6B485B071C9D23D100B71E8F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6B485B0A1C9D23D100B71E8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B485B0C1C9D23D100B71E8F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6B485B0F1C9D23D100B71E8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		6B485B151C9D23D200B71E8F /* NewsFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B485B1A1C9D23D200B71E8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B485B1B1C9D23D200B71E8F /* NewsFeedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTests.m; sourceTree = "<group>"; };
+		6B485B251C9D34FC00B71E8F /* NewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListViewController.h; sourceTree = "<group>"; };
+		6B485B261C9D34FC00B71E8F /* NewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListViewController.m; sourceTree = "<group>"; };
+		6B485B281C9D350C00B71E8F /* NewsDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailsViewController.h; sourceTree = "<group>"; };
+		6B485B291C9D350C00B71E8F /* NewsDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailsViewController.m; sourceTree = "<group>"; };
+		6B485B2B1C9D354600B71E8F /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		6B485B2C1C9D354600B71E8F /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		6B485B2E1C9D355300B71E8F /* SmileyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmileyViewController.h; sourceTree = "<group>"; };
+		6B485B2F1C9D355300B71E8F /* SmileyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmileyViewController.m; sourceTree = "<group>"; };
+		6B485B311C9D3B4700B71E8F /* NewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsItem.h; sourceTree = "<group>"; };
+		6B485B321C9D3B4700B71E8F /* NewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsItem.m; sourceTree = "<group>"; };
 		6FE3F27661D1AF026E195B74 /* Pods-NewsFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsFeed/Pods-NewsFeed.release.xcconfig"; sourceTree = "<group>"; };
 		D49398D96E28F8ACD7106B49 /* Pods-NewsFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewsFeed/Pods-NewsFeed.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,12 +111,20 @@
 			children = (
 				6B485B031C9D23D100B71E8F /* AppDelegate.h */,
 				6B485B041C9D23D100B71E8F /* AppDelegate.m */,
-				6B485B061C9D23D100B71E8F /* ViewController.h */,
-				6B485B071C9D23D100B71E8F /* ViewController.m */,
 				6B485B091C9D23D100B71E8F /* Main.storyboard */,
 				6B485B0C1C9D23D100B71E8F /* Images.xcassets */,
 				6B485B0E1C9D23D100B71E8F /* LaunchScreen.xib */,
 				6B485AFF1C9D23D100B71E8F /* Supporting Files */,
+				6B485B251C9D34FC00B71E8F /* NewsListViewController.h */,
+				6B485B261C9D34FC00B71E8F /* NewsListViewController.m */,
+				6B485B281C9D350C00B71E8F /* NewsDetailsViewController.h */,
+				6B485B291C9D350C00B71E8F /* NewsDetailsViewController.m */,
+				6B485B2B1C9D354600B71E8F /* SettingViewController.h */,
+				6B485B2C1C9D354600B71E8F /* SettingViewController.m */,
+				6B485B2E1C9D355300B71E8F /* SmileyViewController.h */,
+				6B485B2F1C9D355300B71E8F /* SmileyViewController.m */,
+				6B485B311C9D3B4700B71E8F /* NewsItem.h */,
+				6B485B321C9D3B4700B71E8F /* NewsItem.m */,
 			);
 			path = NewsFeed;
 			sourceTree = "<group>";
@@ -294,9 +314,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B485B081C9D23D100B71E8F /* ViewController.m in Sources */,
 				6B485B051C9D23D100B71E8F /* AppDelegate.m in Sources */,
 				6B485B021C9D23D100B71E8F /* main.m in Sources */,
+				6B485B301C9D355300B71E8F /* SmileyViewController.m in Sources */,
+				6B485B271C9D34FC00B71E8F /* NewsListViewController.m in Sources */,
+				6B485B2A1C9D350C00B71E8F /* NewsDetailsViewController.m in Sources */,
+				6B485B331C9D3B4700B71E8F /* NewsItem.m in Sources */,
+				6B485B2D1C9D354600B71E8F /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

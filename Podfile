@@ -1,3 +1,3 @@
 target 'NewsFeed' do
-  pod 'AFNetworking', '~> 3.0'
+  pod 'AFNetworking', '~> 2.5.4’
 end

@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SmileyViewController.h
 //  NewsFeed
 //
 //  Created by Hemang Shah on 19/03/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface SmileyViewController : UIViewController
 
 @end
-
