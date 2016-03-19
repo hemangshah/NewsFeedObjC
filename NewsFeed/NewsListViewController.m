@@ -17,6 +17,9 @@
 #import "NewsItem.h"
 #import "NewsFeedTableViewCell.h"
 
+
+static NSString * const kNewsDetailsPushSegue = @"NewsDetailsPushSegue";
+
 static NSString * const kNewsItemResponse = @"items";
 
 @interface NewsListViewController () <DZNEmptyDataSetSource, DZNEmptyDataSetDelegate> {
@@ -159,13 +162,20 @@ static NSString * const kNewsItemResponse = @"items";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //Deselect Row.
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    //Pass on selected NewsItem to NewsDetailsViewController.
-    NewsItem *item = [newsItems objectAtIndex:indexPath.row];
-    NewsDetailsViewController *newsDetailsVC = (NewsDetailsViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetailsViewController"];
-    [newsDetailsVC setSelectedNewsItem:item];
-    [self.navigationController pushViewController:newsDetailsVC animated:YES];
+    //Push to NewsDetailsViewController with Custom Segue.
+    [self performSegueWithIdentifier:kNewsDetailsPushSegue sender:self];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:kNewsDetailsPushSegue]) {
+        //Get reference to our NewsDetailsViewController.
+        NewsDetailsViewController *newsDetailsVC = (NewsDetailsViewController *)segue.destinationViewController;
+        //Get selected IndexPath
+        NSIndexPath *indexPath = [self.listTableView indexPathForSelectedRow];
+        //Get particular NewsItem
+        newsDetailsVC.newsItem = [newsItems objectAtIndex:indexPath.row];
+        //Deselect Row.
+        [self.listTableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 @end

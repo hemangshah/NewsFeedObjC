@@ -115,6 +115,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="Xco-c9-ltz" id="Uex-Ak-Q9O"/>
                         <outlet property="listTableView" destination="Kk0-Pr-YUi" id="otK-2O-gWl"/>
+                        <segue destination="vpH-SG-0bB" kind="show" identifier="NewsDetailsPushSegue" id="lLa-qF-esw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

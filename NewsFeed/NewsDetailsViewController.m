@@ -12,9 +12,7 @@
 
 #import <UIImageView+AFNetworking.h>
 
-@interface NewsDetailsViewController () {
-    NewsItem *newsItem;
-}
+@interface NewsDetailsViewController ()
 
 @property (nonatomic, weak) IBOutlet UIImageView *iconImageView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -25,7 +23,6 @@
 @implementation NewsDetailsViewController
 #pragma mark - Update UI
 - (void) updateUI {
-    self.title = newsItem.newsSubTitle;
     
     self.titleLabel.font = [UIFont boldSystemFontOfSize:17.0f];
     self.subtitleLabel.font = [UIFont systemFontOfSize:14.0f];
@@ -35,11 +32,12 @@
     self.iconImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.iconImageView.layer.borderWidth = 3.0f;
     
-    if(newsItem) {
-        [self.iconImageView setImageWithURL:newsItem.newsImageUrl placeholderImage:[UIImage imageNamed:@"news.png"]];
-        self.titleLabel.text = newsItem.newsTitle;
-        self.subtitleLabel.text = newsItem.newsSubTitle;
-        self.bodyTextView.text = newsItem.newsBody;
+    if(self.newsItem) {
+        self.title = self.newsItem.newsSubTitle;
+        [self.iconImageView setImageWithURL:self.newsItem.newsImageUrl placeholderImage:[UIImage imageNamed:@"news.png"]];
+        self.titleLabel.text = self.newsItem.newsTitle;
+        self.subtitleLabel.text = self.newsItem.newsSubTitle;
+        self.bodyTextView.text = self.newsItem.newsBody;
     }
 }
 
@@ -53,12 +51,5 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Selected News Item
-- (void) setSelectedNewsItem:(NewsItem *)selectedNewsItem {
-    if(selectedNewsItem) {
-        newsItem = selectedNewsItem;
-    }
 }
 @end

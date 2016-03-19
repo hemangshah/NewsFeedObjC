@@ -11,5 +11,5 @@
 @class NewsItem;
 
 @interface NewsDetailsViewController : UIViewController
-- (void) setSelectedNewsItem:(NewsItem *)selectedNewsItem;
+@property (nonatomic, strong) NewsItem *newsItem;
 @end
