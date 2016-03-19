@@ -219,7 +219,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="nDo-sm-8Ul" kind="presentation" id="EwQ-4L-NBa"/>
+                                    <segue destination="KV3-M3-1xr" kind="presentation" id="xfE-N6-cPQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -235,7 +235,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EdW-Se-wCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-735" y="-502"/>
+            <point key="canvasLocation" x="-1027" y="-640"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2LK-kh-e2v">
+            <objects>
+                <navigationController id="KV3-M3-1xr" sceneMemberID="viewController">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lwi-3z-i3q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nDo-sm-8Ul" kind="relationship" relationship="rootViewController" id="c0L-lr-oLI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w97-5J-v0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-643" y="-520"/>
         </scene>
         <!--Smiley View Controller-->
         <scene sceneID="mbR-pC-mbh">
@@ -249,19 +267,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QR6-XS-C82">
-                                <rect key="frame" x="60" y="518" width="200" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="85I-EI-b2x"/>
-                                    <constraint firstAttribute="width" constant="200" id="rd0-ZL-NVV"/>
-                                </constraints>
-                                <state key="normal" title="Dismiss">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="actionDismiss:" destination="nDo-sm-8Ul" eventType="touchUpInside" id="ggd-hf-fWG"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😄😄😄" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyz-t9-mmz" userLabel="Smiley">
                                 <rect key="frame" x="60" y="234" width="200" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -277,11 +282,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="eyz-t9-mmz" secondAttribute="centerX" id="P44-bf-S5Z"/>
-                            <constraint firstItem="M2w-8o-STE" firstAttribute="top" secondItem="QR6-XS-C82" secondAttribute="bottom" constant="20" id="hiu-cY-Y7u"/>
-                            <constraint firstAttribute="centerX" secondItem="QR6-XS-C82" secondAttribute="centerX" id="imq-h6-mVH"/>
                             <constraint firstAttribute="centerY" secondItem="eyz-t9-mmz" secondAttribute="centerY" id="tDB-kf-MsJ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="hpL-RO-p57">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="zno-gE-elC">
+                            <connections>
+                                <action selector="actionDismiss:" destination="nDo-sm-8Ul" id="Qn3-IY-NhM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
@@ -290,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="enG-hm-WSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-279" y="-415"/>
+            <point key="canvasLocation" x="-249" y="-402"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="SvN-4k-hbS">

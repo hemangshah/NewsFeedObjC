@@ -16,7 +16,7 @@
 @implementation SmileyViewController
 #pragma mark - UpdateUI
 - (void) updateUI {
-    self.title = @"Smiley";
+    self.title = @"Smileys";
     //We can get more smileys. ctrl + command + space shortcut.
     self.smileyLabel.text = @"😄😄😄😄😄";
 }
